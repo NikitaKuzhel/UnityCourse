@@ -6,10 +6,10 @@ https://www.youtube.com/watch?v=JNdJ5ozN8cU – Hollow Knight
 •	1-ый тип врагов: враг перемещается вправо, влево по ограниченному пространству, наносит урон врагу, когда соприкасается с ним (пример врагов на 3:05);
 •	2-ой тип врагов: враг перемещается вправо, влево по ограниченному пространству, но когда персонаж попадает в область его видимости, начинает бежать на него, наносит урон врагу, когда соприкасается с ним (пример врагов на 10:13);
 
-•	У персонажа есть жизни. После получения урона от врага, отнимается одна жизнь и его отбрасывает немного назад;
-•	Подбираемая жизнь. После подбора такой, у персонажа восстанавливается одна жизнь, если запас его жизней, не полон;
+•	У персонажа есть очки здоровья. После получения урона от врага, отнимается одно очко и его отбрасывает немного назад;
+•	Подбираемое здоровье. После подбора такой, у персонажа восстанавливается оодно очко здоровья, если запас его здоровья, не полон;
 •	Подбираемый ключ. Ключ открывает запертую дверь, после этого он пропадает;
-•	Шипы. При соприкосновении с шипами, у персонажа отнимается одна жизнь. (пример шипов на 5:15).
+•	Шипы. При соприкосновении с шипами, у персонажа отнимается оодно очко здоровья и его отбрасывает на контрольную точку (пример шипов на 5:15).
 
 ПРОЕКТИРОВАНИЕ ОСНОВНЫХ СУЩНОСТЕЙ
 
@@ -18,8 +18,11 @@ Player
  - JumpForce
  - Attack
  - HealthBar
- - OnPlayerHit()
+ - Inventory
+ - TakeDamage()
  - OnPlayerDeath()
+ - OnPlayerPickUpHealthPotion()
+ - OnPlayerPickUpKey()
 
  Locomotion
   - MoveLeft()
@@ -28,8 +31,9 @@ Player
   
 enum EnemyType
 {
-	Passive
-	Agressive
+	Passive // враг, который не реагирует на игрока
+	Agressive // враг, который реагирует на игрока
+	Spike // шипы
 }
 
 enum ItemType
@@ -38,16 +42,24 @@ enum ItemType
 	Key
 
 Enemy
+ - Speed
+ - Behaviour
  - EnemyType
+ - EnemyHealth
  - EnemyAffect
- - ApplyAffectToPlayer (EnemyAffect affect)
- - ApplyAffectFromPlayer (AttackAffect attack)
+ - TakeDamage
+ - OnEnemyDeath
  
 GameController
  - Player
  - Start()
  - End()
- - OnPlayerDeathHandler()
+ - OnPlayerTakeDamageHandler() // отнять оодно очко здоровья у игрока
+ - OnPlayerDeathHandler() // показать окно смерти
+ - OnPlayerAttakHandler() // отнять оодно очко здоровья у врага
+ - OnPlayerKillHandler() // убить врага
+ - OnPlayerPickUpHealthPotionHandler() // пополнить оодно очко здоровья
+ - OnPlayerPickUpKeyHandler() // добавить ключ в инвентарь
  
  CameraMovement
  - MoveToTarget(Player)
