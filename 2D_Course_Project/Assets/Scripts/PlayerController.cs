@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 2f;
     [SerializeField] private float jumpForce = 2f;
-    [SerializeField] private Animator animator;
 
     private Rigidbody2D _rigidbody;
 
@@ -21,9 +20,6 @@ public class PlayerController : MonoBehaviour
         var movement = Input.GetAxis("Horizontal");
         transform.position += new Vector3(movement, 0, 0) * Time.deltaTime * speed;
 
-        // Анимация бега
-        animator.SetFloat("Speed", Mathf.Abs(movement));
-
         // Разворот персонажа
         if (!Mathf.Approximately(0, movement))
         {
@@ -34,12 +30,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && Mathf.Abs(_rigidbody.velocity.y) < 0.001f)
         {
             _rigidbody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-            animator.SetBool("IsJumping", true);
-        }
-
-        if (Mathf.Abs(_rigidbody.velocity.y) < 0.001f)
-        {
-            animator.SetBool("IsJumping", false);
         }
     }
 }
