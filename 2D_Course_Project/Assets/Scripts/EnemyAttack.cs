@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCombat : MonoBehaviour
+public class EnemyAttack : MonoBehaviour
 {
-    // [SerializeField] private Animator animator;
-
     [SerializeField] private Transform attackPoint;
-    [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private LayerMask playerLayer;
 
     [SerializeField] private float attackRange = 0.5f;
     [SerializeField] private int attackDamage = 40;
@@ -19,27 +17,22 @@ public class PlayerCombat : MonoBehaviour
     {
         if (Time.time >= nextAttackTime)
         {
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                Attack();
-                nextAttackTime = Time.time + 1f / attackRate;
-            }
+            Attack();
+            nextAttackTime = Time.time + 1f / attackRate;
+        
         }
     }
 
     void Attack()
     {
-        // Проигрыш анимации
-        //animator.SetTrigger("Attack");
-
-        // Определяет игроков в зоне для атаки
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
+        // Определяет игрока в зоне для атаки
+        Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
 
         // Наносит урон
-        foreach(Collider2D enemy in hitEnemies)
+        foreach (Collider2D player in hitPlayer)
         {
-            Debug.Log("We hit" + enemy.name);
-            enemy.GetComponent<EnemyHP>().TakeDamage(attackDamage);
+            Debug.Log("We hit" + player.name);
+            player.GetComponent<PlayerHP>().TakeDamage(attackDamage);
         }
     }
 

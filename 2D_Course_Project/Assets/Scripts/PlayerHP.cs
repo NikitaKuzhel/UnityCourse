@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHP : MonoBehaviour
+public class PlayerHP : MonoBehaviour
 {
     [SerializeField] private int MaxHealth = 100;
     private int currentHealth;
@@ -18,7 +18,7 @@ public class EnemyHP : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Debug.Log("Enemy Died!");
+            Debug.Log("Player Died!");
         }
     }
 }
