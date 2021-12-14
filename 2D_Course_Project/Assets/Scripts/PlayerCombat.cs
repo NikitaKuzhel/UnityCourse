@@ -10,7 +10,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private LayerMask enemyLayer;
 
     [SerializeField] private float attackRange = 0.5f;
-    [SerializeField] private int attackDamage = 40;
+    [SerializeField] private int attackDamage = 50;
 
     [SerializeField] private float attackRate = 2f; // сколько раз можно ударить в секунду
     float nextAttackTime = 0f;
