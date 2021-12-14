@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PlayerHP : MonoBehaviour
 {
-    [SerializeField] private int MaxHealth = 100;
-    private int currentHealth;
+    public int MaxHealth = 100;
+    public int currentHealth;
+
+    [SerializeField] private GameManager gameManager;
 
     void Start()
     {
@@ -19,6 +21,7 @@ public class PlayerHP : MonoBehaviour
         if (currentHealth <= 0)
         {
             Debug.Log("Player Died!");
+            gameManager.GameOver();
         }
     }
 }
