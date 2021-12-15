@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    PlayerHP playerHP;
+    public PlayerHP playerHP;
 
-    int potion = 20;
+    public HealthBar healthBar;
+
+    [SerializeField] private int potion = 40;
 
     private void Awake()
     {
@@ -15,10 +17,18 @@ public class Health : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (playerHP.currentHealth < playerHP.MaxHealth)
+        if (playerHP.currentHealth < playerHP.maxHealth)
         {
             Destroy(gameObject);
             playerHP.currentHealth += potion;
+
+            if (playerHP.currentHealth > 100)
+            {
+                playerHP.currentHealth = 100;
+            }
+
+
+            healthBar.SetHealth(playerHP.currentHealth);
         }
     }
 }

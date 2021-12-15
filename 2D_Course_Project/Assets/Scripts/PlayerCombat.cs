@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
-    // [SerializeField] private Animator animator;
+    [SerializeField] private Animator animator;
 
     [SerializeField] private Transform attackPoint;
     [SerializeField] private LayerMask enemyLayer;
@@ -19,7 +19,7 @@ public class PlayerCombat : MonoBehaviour
     {
         if (Time.time >= nextAttackTime)
         {
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 Attack();
                 nextAttackTime = Time.time + 1f / attackRate;
@@ -30,7 +30,7 @@ public class PlayerCombat : MonoBehaviour
     void Attack()
     {
         // Проигрыш анимации
-        //animator.SetTrigger("Attack");
+        animator.SetTrigger("Attack");
 
         // Определяет игроков в зоне для атаки
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);

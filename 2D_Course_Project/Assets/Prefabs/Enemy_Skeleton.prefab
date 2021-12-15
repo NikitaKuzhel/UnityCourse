@@ -156,6 +156,7 @@ GameObject:
   - component: {fileID: 1346197421}
   - component: {fileID: 1346197422}
   - component: {fileID: 1346197423}
+  - component: {fileID: 366648441}
   m_Layer: 9
   m_Name: Enemy_Skeleton
   m_TagString: Untagged
@@ -298,7 +299,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   attackRange: 0.5
-  attackDamage: 40
+  attackDamage: 20
   attackRate: 1
 --- !u!114 &1346197423
 MonoBehaviour:
@@ -313,6 +314,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 100
+--- !u!114 &366648441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4421271623440071474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cbb9b123f2a4a144a5d942acb22fab5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDistance: 6
+  moveSpeed: 2
+  timer: 2
+  leftLimit: {fileID: 0}
+  rightLimit: {fileID: 0}
+  target: {fileID: 0}
+  inRange: 0
+  hotZone: {fileID: 186182263534733627}
+  triggerArea: {fileID: 4421271622579224349}
 --- !u!1 &4421271623707634611
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class EnemyMovement : MonoBehaviour
 
     [SerializeField] private Transform startPoint;
     [SerializeField] private Transform endPoint;
-    [SerializeField] private float look;
+    // [SerializeField] private float look;
 
     [SerializeField] private float duration;
 
