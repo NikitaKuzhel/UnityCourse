@@ -7,11 +7,16 @@ public class KeyHolder : MonoBehaviour
 {
     public event EventHandler OnKeysChanged;
 
+    [SerializeField] private AudioClip keySound;
+    private AudioSource audioSource;
+
     private List<Key.KeyType> keyList;
 
     private void Awake()
     {
         keyList = new List<Key.KeyType>();
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Возвращает список ключей для UI
@@ -25,6 +30,9 @@ public class KeyHolder : MonoBehaviour
         Debug.Log("Added key: " + keyType);
         keyList.Add(keyType);
         OnKeysChanged?.Invoke(this, EventArgs.Empty);
+
+        // Проигрыш звука
+        audioSource.PlayOneShot(keySound, 1f);
     }
 
     public void RemoveKey(Key.KeyType keyType)

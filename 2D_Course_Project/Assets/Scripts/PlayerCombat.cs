@@ -6,6 +6,9 @@ public class PlayerCombat : MonoBehaviour
 {
     [SerializeField] private Animator animator;
 
+    [SerializeField] private AudioClip whoosh;
+    private AudioSource audioSource;
+
     [SerializeField] private Transform attackPoint;
     [SerializeField] private LayerMask enemyLayer;
 
@@ -13,7 +16,12 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private int attackDamage = 50;
 
     [SerializeField] private float attackRate = 2f; // сколько раз можно ударить в секунду
-    float nextAttackTime = 0f;
+    private float nextAttackTime = 0f;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void Update()
     {
@@ -31,6 +39,9 @@ public class PlayerCombat : MonoBehaviour
     {
         // Проигрыш анимации
         animator.SetTrigger("Attack");
+
+        // Проигрыш звука
+        audioSource.PlayOneShot(whoosh, 1f);
 
         // Определяет игроков в зоне для атаки
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
