@@ -5,30 +5,15 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 2f;
+    [SerializeField] private Animator animator;
 
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.W))
-        {
-            targetMotion(Vector3.left);
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            targetMotion(Vector3.right);
-        }
+        // Движение персонажа
+        var movement = Input.GetAxis("Vertical");
+        transform.position += new Vector3(-movement, 0, 0) * Time.deltaTime * speed;
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            targetMotion(Vector3.back);
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            targetMotion(Vector3.forward);
-        }
-    }
-
-    void targetMotion(Vector3 direction)
-    {
-        transform.position += direction * speed * Time.deltaTime;
+        // Анимация бега
+        animator.SetFloat("Speed", Mathf.Abs(movement));
     }
 }
