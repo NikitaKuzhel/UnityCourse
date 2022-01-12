@@ -9,15 +9,11 @@ public class MovableSystem : MonoBehaviour
     [SerializeField] private float _rotationSpeed = 10f;
     [SerializeField] private Animator _animator;
 
-    private Rigidbody _rigidbody;
-
-    // Start is called before the first frame update
     void Start()
     {
-        _rigidbody = GetComponent<Rigidbody>();
+        
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         Move();
@@ -25,12 +21,17 @@ public class MovableSystem : MonoBehaviour
 
     private void Move()
     {
+        // построение вектора персонажа на основе вектора джойстика
         Vector3 playerVector = _movable.MotionVector;
         playerVector = new Vector3(playerVector.x, 0, playerVector.y);
+
+        // движение персонажа
         if (_movable.IsMoved)
         {
             transform.position += playerVector * Time.deltaTime * _speed;
             _animator.SetBool("IsRunning", true);
+
+            // разворот персонажа
             if (playerVector != Vector3.zero)
             {
                 Quaternion toRotation = Quaternion.LookRotation(playerVector, Vector3.up);

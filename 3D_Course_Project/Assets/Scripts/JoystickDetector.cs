@@ -28,11 +28,12 @@ public class JoystickDetector : MonoBehaviour, IBeginDragHandler, IDragHandler, 
     {
         var distance = Vector3.Distance(_background.position, eventData.position); // расстояние от кнопки до края джойстика
         var direction = (new Vector3(eventData.position.x, eventData.position.y) - _background.position).normalized;
+        // манипуляции для нормальной прокрутки джойстиком
         distance = Mathf.Clamp(distance, 0, _radius);
         var normalizedDistance = distance / _radius;
         _joystickVector = direction * normalizedDistance;
         _thumble.position = _background.position + direction * _radius * normalizedDistance;
-        Debug.Log($"Joystick vector {_joystickVector}");
+        // Debug.Log($"Joystick vector {_joystickVector}");
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -41,13 +42,11 @@ public class JoystickDetector : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         HideBackground();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         HideBackground();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
