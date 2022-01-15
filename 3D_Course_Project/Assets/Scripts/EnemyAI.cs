@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private Transform _player;
     [SerializeField] Animator _animator;
-    [SerializeField] private ShootingBehaviour shoot;
+    [SerializeField] private ShootingBehaviour _shoot;
 
     [SerializeField] private LayerMask _whatIsGround;
     [SerializeField] private LayerMask _whatIsPlayer;
@@ -100,8 +100,8 @@ public class EnemyAI : MonoBehaviour
 
         if (!_alreadyAttacked)
         {
-            shoot.Shoot();
-            Debug.Log("SHOOT");
+            _shoot.Shoot();
+            //Debug.Log("SHOOT");
 
             _alreadyAttacked = true;
             Invoke(nameof(ResetAttack), _timeBetweenAttacks);
