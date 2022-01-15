@@ -245,6 +245,7 @@ MonoBehaviour:
     type: 3}
   _startPoint: {fileID: 904353638}
   _parentForBullet: {fileID: 339324919}
+  _animator: {fileID: 85870148057010746}
 --- !u!1001 &21198211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26664,7 +26665,6 @@ GameObject:
   - component: {fileID: 5425121082995869570}
   - component: {fileID: 5425121082995869571}
   - component: {fileID: 5425121082995869569}
-  - component: {fileID: 5425121082995869568}
   - component: {fileID: 5425121082995869572}
   - component: {fileID: 5425121082995869573}
   m_Layer: 9
@@ -26674,20 +26674,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &5425121082995869568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5425121082995869567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7c48ae55a516c14e8f91353fb875d72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _agent: {fileID: 5425121082995869569}
-  _cam: {fileID: 1404551815}
 --- !u!195 &5425121082995869569
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -26754,6 +26740,7 @@ MonoBehaviour:
   _agent: {fileID: 5425121082995869569}
   _player: {fileID: 2106585150974791336}
   _animator: {fileID: 6288411121258629069}
+  shoot: {fileID: 5425121082995869573}
   _whatIsGround:
     serializedVersion: 2
     m_Bits: 2048
@@ -26762,7 +26749,7 @@ MonoBehaviour:
     m_Bits: 256
   _walkPoint: {x: 0, y: 0, z: 0}
   _walkPointRange: 5
-  _timeBetweenAttacks: 2
+  _timeBetweenAttacks: 1
   _sightRange: 6
   _attackRange: 4
   _playerInSightRange: 0
@@ -26783,6 +26770,7 @@ MonoBehaviour:
     type: 3}
   _startPoint: {fileID: 119250430}
   _parentForBullet: {fileID: 339324919}
+  _animator: {fileID: 6288411121258629069}
 --- !u!4 &5425121082995907329
 Transform:
   m_ObjectHideFlags: 0

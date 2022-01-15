@@ -10,6 +10,8 @@ public class ShootingBehaviour : MonoBehaviour
 
     [SerializeField] private Transform _parentForBullet;
 
+    [SerializeField] private Animator _animator;
+
     void Start()
     {
         
@@ -24,5 +26,6 @@ public class ShootingBehaviour : MonoBehaviour
     {
         var bullet = Instantiate(_bulletPrefab, _parentForBullet);
         bullet.SetupDirection(_startPoint);
+        _animator.SetTrigger("Attack");
     }
 }

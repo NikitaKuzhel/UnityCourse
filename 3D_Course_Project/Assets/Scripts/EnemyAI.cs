@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private Transform _player;
     [SerializeField] Animator _animator;
-    private ShootingBehaviour _shoot;
+    [SerializeField] private ShootingBehaviour shoot;
 
     [SerializeField] private LayerMask _whatIsGround;
     [SerializeField] private LayerMask _whatIsPlayer;
@@ -45,7 +45,7 @@ public class EnemyAI : MonoBehaviour
 
         if (!_playerInSightRange && !_playerInAttackRange) Patroling();
         if (_playerInSightRange && !_playerInAttackRange) ChasePlayer();
-        if (_playerInSightRange && _playerInAttackRange) AttackPLayer();
+        if (_playerInSightRange && _playerInAttackRange) AttackPlayer();
     }
 
     private void Patroling()
@@ -89,7 +89,7 @@ public class EnemyAI : MonoBehaviour
         _agent.SetDestination(_player.position);
     }
 
-    private void AttackPLayer()
+    private void AttackPlayer()
     {
         // Удостовериться двигается ли враг
         _agent.SetDestination(transform.position);
@@ -100,7 +100,7 @@ public class EnemyAI : MonoBehaviour
 
         if (!_alreadyAttacked)
         {
-            _shoot.Shoot();
+            shoot.Shoot();
             Debug.Log("SHOOT");
 
             _alreadyAttacked = true;
