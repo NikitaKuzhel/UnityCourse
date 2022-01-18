@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour
+public class BackupAI : MonoBehaviour
 {
     private const float MaxDistance = 2f;
 
@@ -60,6 +60,11 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+
+    }
+
     private void Patroling()
     {
         if (!_walkPointSet)
@@ -103,35 +108,34 @@ public class EnemyAI : MonoBehaviour
     {
         _agent.SetDestination(_player.position);
 
+        _animator.SetBool("IsRunning", true);
+
         _playerInSightRange = Physics.CheckSphere(transform.position, _sightRange, _whatIsPlayer);
         _playerInAttackRange = Physics.CheckSphere(transform.position, _attackRange, _whatIsPlayer);
         if (!_playerInSightRange) _state = State.Patroling;
-        if (_playerInAttackRange) _state = State.AttackPlayer;
+        if (_playerInSightRange && _playerInAttackRange) _state = State.AttackPlayer;
     }
 
     private void AttackPlayer()
     {
+        // Остановить бота
         _agent.SetDestination(transform.position);
 
-        Vector3 relativePos = _player.position - transform.position;
-
-        Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-        transform.rotation = rotation;
-
-        //transform.LookAt(_player);
+        transform.LookAt(_player);
 
         _animator.SetBool("IsRunning", false);
 
         if (!_alreadyAttacked)
         {
             _shoot.Shoot();
+            //Debug.Log("SHOOT");
 
             _alreadyAttacked = true;
             Invoke(nameof(ResetAttack), _timeBetweenAttacks);
         }
 
         _playerInAttackRange = Physics.CheckSphere(transform.position, _attackRange, _whatIsPlayer);
-        if (!_playerInAttackRange) _state = State.Patroling;
+        if (!_playerInAttackRange) _state = State.ChasePlayer;
     }
 
     private void ResetAttack()

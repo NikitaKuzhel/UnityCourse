@@ -9,4 +9,18 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("MainScene");
     }
+
+    public void SetVolume(bool volume)
+    {
+        if (volume)
+        {
+            AudioListener.volume = 1;
+            Debug.Log(volume);
+        }
+        else
+        {
+            AudioListener.volume = 0;
+            Debug.Log(volume);
+        }
+    }
 }
