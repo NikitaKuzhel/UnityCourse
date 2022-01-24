@@ -39,6 +39,18 @@ public class BulletBehaviour : MonoBehaviour
         DestroyBullet();
     }
 
+    private void OnTriggerEnter(Collider hitInfo)
+    {
+        PlayerHP player = hitInfo.GetComponent<PlayerHP>();
+        if (player != null)
+        {
+            player.TakeDamage(30);
+            Debug.Log("We hit " + player.name);
+            DestroyBullet();
+        }
+        
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         DestroyBullet();
