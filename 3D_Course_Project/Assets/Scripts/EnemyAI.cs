@@ -118,7 +118,7 @@ public class EnemyAI : MonoBehaviour
         Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
         transform.rotation = rotation;
 
-        //transform.LookAt(_player);
+        transform.LookAt(_player);
 
         _animator.SetBool("IsRunning", false);
 
