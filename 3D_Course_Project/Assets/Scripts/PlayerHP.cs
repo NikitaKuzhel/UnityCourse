@@ -5,22 +5,24 @@ using UnityEngine;
 
 public class PlayerHP : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 100;
-    [SerializeField] private int currentHealth;
+    [SerializeField] private int _maxHealth = 100;
+    [SerializeField] private int _currentHealth;
+    [SerializeField] private Transform _respawnPoint;
 
     void Start()
     {
-        currentHealth = maxHealth;
+        _currentHealth = _maxHealth;
     }
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
+        _currentHealth -= damage;
         // Debug.Log("Taked damage");
 
-        if (currentHealth <= 0)
+        if (_currentHealth <= 0)
         {
             Debug.Log("Player Died!");
+            transform.position = _respawnPoint.position;
         }
     }
 }
