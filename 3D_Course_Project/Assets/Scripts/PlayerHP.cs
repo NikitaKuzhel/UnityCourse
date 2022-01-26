@@ -13,6 +13,9 @@ public class PlayerHP : MonoBehaviour
 
     [SerializeField] private HealthBar _healthBar;
 
+    [SerializeField] LayerMask _redTeam;
+    [SerializeField] LayerMask _blueTeam;
+
     void Start()
     {
         _currentHealth = _maxHealth;
@@ -26,10 +29,20 @@ public class PlayerHP : MonoBehaviour
 
         if (_currentHealth <= 0)
         {
-            Debug.Log("Player Died!");
+            Debug.Log(gameObject.name + " died!");
             transform.position = _respawnPoint.position;
             _currentHealth = _maxHealth;
             _healthBar.SetHealth(_currentHealth);
+
+            if (gameObject.tag == "Enemy")
+            {
+                RedTeamScore.scoreValue += 1;
+            }
+
+            if (gameObject.tag == "Player")
+            {
+                BlueTeamScore.scoreValue += 1;
+            }
         }
 
         if (_regen != null)
