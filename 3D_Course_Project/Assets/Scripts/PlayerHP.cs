@@ -13,9 +13,6 @@ public class PlayerHP : MonoBehaviour
 
     [SerializeField] private HealthBar _healthBar;
 
-    [SerializeField] LayerMask _redTeam;
-    [SerializeField] LayerMask _blueTeam;
-
     void Start()
     {
         _currentHealth = _maxHealth;
