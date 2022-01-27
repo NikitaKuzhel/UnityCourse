@@ -28,6 +28,7 @@ public class PlayerHP : MonoBehaviour
         {
             Debug.Log(gameObject.name + " died!");
             transform.position = _respawnPoint.position;
+            transform.rotation = _respawnPoint.rotation;
             _currentHealth = _maxHealth;
             _healthBar.SetHealth(_currentHealth);
 
