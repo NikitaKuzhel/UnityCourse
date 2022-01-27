@@ -7,6 +7,7 @@ public class BlueTeamScore : MonoBehaviour
 {
     [SerializeField] private Text _scoreText;
     [SerializeField] private GameManager _gameManager;
+    [SerializeField] private int _scoreToWin;
     public static int scoreValue = 0;
 
     void Start()
@@ -18,7 +19,7 @@ public class BlueTeamScore : MonoBehaviour
     {
         _scoreText.text = scoreValue.ToString();
 
-        if (BlueTeamScore.scoreValue == 1)
+        if (BlueTeamScore.scoreValue == _scoreToWin)
         {
             _gameManager.BlueTeamWon();
             Debug.Log("Blue Team Won");
