@@ -9171,7 +9171,7 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 8913532149944014693, guid: 2f06bdd4e2aaba64cb49c5d21ca2f829,
     type: 3}
   _startPoint: {fileID: 108218}
-  _parentForBullet: {fileID: 0}
+  _parentForBullet: {fileID: 719683079454411500}
   _animator: {fileID: 582824543}
 --- !u!114 &582824541
 MonoBehaviour:
@@ -14737,7 +14737,7 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 8913532149944014693, guid: 2f06bdd4e2aaba64cb49c5d21ca2f829,
     type: 3}
   _startPoint: {fileID: 1842640860}
-  _parentForBullet: {fileID: 0}
+  _parentForBullet: {fileID: 719683079454411500}
   _animator: {fileID: 1007952748}
 --- !u!114 &1007952746
 MonoBehaviour:
@@ -32825,7 +32825,7 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 8913532149944014693, guid: 2f06bdd4e2aaba64cb49c5d21ca2f829,
     type: 3}
   _startPoint: {fileID: 119250430}
-  _parentForBullet: {fileID: 0}
+  _parentForBullet: {fileID: 719683079454411500}
   _animator: {fileID: 6288411121258629069}
 --- !u!65 &5425121082995869574
 BoxCollider:
