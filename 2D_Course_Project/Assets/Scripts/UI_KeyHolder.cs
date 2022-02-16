@@ -40,22 +40,9 @@ public class UI_KeyHolder : MonoBehaviour
         List<Key.KeyType> keyList = keyHolder.GetKeyList();
         for (int i = 0; i < keyList.Count; i++)
         {
-            Key.KeyType keyType = keyList[i];
             Transform keyTransform = Instantiate(keyTemplate, container);
-            keyTemplate.gameObject.SetActive(true);
+            keyTransform.gameObject.SetActive(true);
             keyTransform.GetComponent<RectTransform>().anchoredPosition = new Vector2(50 * i, 0);
-            Image keyImage = keyTransform.Find("image").GetComponent<Image>();
-            switch (keyType)
-            {
-                case Key.KeyType.Key1:
-                    break;
-                case Key.KeyType.Key2:
-                    break;
-                case Key.KeyType.Key3:
-                    break;
-                default:
-                    break;
-            }
         }
     }
 }

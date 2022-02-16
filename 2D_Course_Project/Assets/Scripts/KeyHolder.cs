@@ -37,7 +37,7 @@ public class KeyHolder : MonoBehaviour
 
     public void RemoveKey(Key.KeyType keyType)
     {
-        keyList.Add(keyType);
+        keyList.Remove(keyType);
         OnKeysChanged?.Invoke(this, EventArgs.Empty);
     }
 

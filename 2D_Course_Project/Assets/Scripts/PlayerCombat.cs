@@ -49,7 +49,7 @@ public class PlayerCombat : MonoBehaviour
         // Наносит урон
         foreach(Collider2D enemy in hitEnemies)
         {
-            Debug.Log("We hit" + enemy.name);
+            Debug.Log("We hit " + enemy.name);
             enemy.GetComponent<EnemyHP>().TakeDamage(attackDamage);
         }
     }
