@@ -1,0 +1,74 @@
+Player
+- 
+- Lives
+- Name
+- Ship
+- ChangeShip()
+- OnPlayerDeath()
+- TakeDamage(int damage)
+
+- ApplyInvulnerable();
+
+- Invulnerable
+
+InvulnerableData
+{
+	int ScorePointToActivate;
+	event OnActivate
+	_scorePointCounter;
+}
+
+ShipType
+{
+	Andromeda,
+	Yamato
+}
+
+Ship
+{
+	Speed;
+	ShipType;
+	MainWeapon;
+	AdditionalWeapon;
+}
+
+WeaponType
+{
+	SingleLaser
+	DoubleLaser
+}
+
+Weapon
+- BulletSpeed
+- WeaponType Type
+- FireRate
+- Damage
+- Fire()
+
+EnemyType
+{
+	Worm,
+	CrazyUfo,
+}
+
+Enemy
+{	
+	- Speed;
+	- ScorePointOnDeath
+	- HealthPoint
+	- Behaviour()
+	- TakeDamage(int damage)
+	- event Action<int> OnEnemyDeath 
+}
+
+MedusaEnemy: Enemy
+
+ScoreManager
+ - Score
+ - Highscore
+ - AddScore(score)
+ - OnEnemyDeathHandler(int score)
+
+GameController
+- Credits
+- OnPlayerDeathHandler - // оповещение о том, что игрок умер

@@ -1,0 +1,56 @@
+Platformers 
+
+enum ElementalType
+{
+	Fire,
+	Ice,
+	Earth
+}
+
+enum ElementalAffect
+{
+	Burn, //fire
+	Freeze,
+	
+}
+
+Player
+ - Speed
+ - JumpForce
+ - MaximumSpeed
+ - ElementalType SelecetedElemental
+ - OnPlayerDeath()
+ 
+Locomotion
+ - MoveLeft()
+ - MoveRight()
+ - Jump()
+
+
+enum EnemyType
+{
+	Puller
+}
+
+enum EnemyAffect
+{
+	Pull
+}
+
+Enemy
+ - EnemyType
+ - EnemyAffect
+ - ApplyAffectToPlayer(EnemyAffect affect)
+ - ApplyAffectFromPlayer(ElementalAffect affect)
+ 
+LevelContoller
+ - Player
+ - Start()
+ - End()
+ 
+ - OnPlayerDeathHandler() - // показать меню смерти
+ 
+CameraMovement
+- MoveToTarget(Player)
+ 
+ 

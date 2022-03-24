@@ -1,0 +1,69 @@
+Rocket
+- Speed
+- LaunchBall()
+- StartBallPoint - transform
+- Fire()
+- Firerate
+- TakeBonus()
+- Lives
+
+BonusTypeByTimeUsage
+{
+	Time,
+	Always,
+	Immediatly
+}
+
+BonusType
+{
+	Gun,
+	EnlargeRocketx2,
+	ReduseRocketx2,
+	TrippleBall,
+	InvulnerableBall,
+	Live,
+	MaximumSpeed,
+	MinimumSpeed,
+	Wall
+}
+
+Ball
+- Speed;
+- SetMaximumSpeed();
+- SetMinimumSpeed();
+- TrippleBallAcivator();
+- SetInvulnerable();
+- OnOutOfBoundsEvent
+
+BrickType
+{
+	Simple,
+	Bonus
+}
+
+Brick
+- HealthPoint = 1
+- Color
+- BrickType Type
+- ScorePoint
+- event Action<int> OnBrickDestroyEvent
+
+
+ScoreManager
+- int Score
+- AddScore()
+- OnBrickDestroyEventHandler(int score)
+
+LevelController
+{
+	List<Brick> Bricks;
+	OnBrickDestroyEventHandler(int score)
+	CheckFOrCompletation()
+	OnLevelCompleted()
+}
+
+GameControler
+{
+	- Rocket
+	- OnOutOfBoundsEventHandler // проверка жизней у рокетки
+}
